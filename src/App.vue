@@ -47,7 +47,12 @@ const contains = ref("")
 const contains_fr = ref("")
 
 const onDownload = async () => {
-	htmlToImage.toJpeg(document.getElementById('nutritionlabel'), { quality: 0.95 })
+	const node = document.getElementById('nutritionlabel')
+	if (!node) {
+		alert("An error has occured, try a take a screenshot")
+		return
+	}
+	htmlToImage.toJpeg(node, { quality: 0.95 })
 		.then(function (dataUrl) {
 			var link = document.createElement('a');
 			link.download = 'nutritionlabel.jpeg';
@@ -136,7 +141,7 @@ const onDownload = async () => {
 						</div>
 						<div class="flex justify-between items-center">
 							<p class="leading-[9pt] [text-indent:6pt]">Fibre / Fibres <span class="font-normal">{{ fibre
-							}} g</span></p>
+									}} g</span></p>
 							<p class="">{{ fibre_percent }} %</p>
 						</div>
 						<div class="flex justify-between items-center">
