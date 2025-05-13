@@ -1,11 +1,12 @@
 <script setup lang="ts">
 import { ref } from 'vue'
+import * as htmlToImage from 'html-to-image';
 
 const measurement = ref("")
 const measurement_fr = ref("")
 const measurement_metric = ref("")
 const measurement_unit = ref("")
-const servings = ref("")
+// const servings = ref("")
 
 const calories = ref("")
 const fats = ref("")
@@ -44,6 +45,17 @@ const may_contain = ref("")
 const may_contain_fr = ref("")
 const contains = ref("")
 const contains_fr = ref("")
+
+const onDownload = async () => {
+	htmlToImage.toJpeg(document.getElementById('nutritionlabel'), { quality: 0.95 })
+		.then(function (dataUrl) {
+			var link = document.createElement('a');
+			link.download = 'nutritionlabel.jpeg';
+			link.href = dataUrl;
+			link.click();
+		});
+}
+
 </script>
 
 <template>
@@ -82,16 +94,15 @@ const contains_fr = ref("")
 			</div>
 			<div
 				class="-mt-12 -ml-12 p-12 lg:sticky lg:top-4 lg:col-start-2 lg:row-span-2 lg:row-start-1 lg:overflow-hidden">
-				<div class="w-[190pt] p-4 shadow-xl rounded-2xl bg-white">
+				<div id="nutritionlabel" class="w-[190pt] p-4 shadow-xl rounded-2xl bg-white">
 					<div class="border-[0.5pt] p-[3pt] leading-[10pt] text-[8pt]">
 						<h2 class="font-black text-[13pt] leading-[14pt]">Nutrition Facts</h2>
 						<h2 class="font-black text-[13pt] leading-[14pt]">Valeur nutritive</h2>
 						<p class="text-[9pt] leading-[11pt]">Per {{ measurement }} ({{ measurement_metric }} {{
-							measurement_unit }}) / par {{ measurement_fr }} ({{ measurement_metric }} {{
 							measurement_unit }})</p>
-						<p class="text-[9pt] leading-[11pt]">{{ servings }} servings</p>
-						<p class="text-[9pt] leading-[11pt]">{{ servings }} portions</p>
-						<hr class="h-[1pt] bg-black border-0 mt-[1px]" />
+						<p class="text-[9pt] leading-[11pt]">Pour {{ measurement_fr }} ({{ measurement_metric }} {{
+							measurement_unit }})</p>
+						<hr class="h-[1pt] bg-black border-0 my-[1px]" />
 						<div class="flex justify-between">
 							<h3
 								class="font-black underline underline-offset-3 mb-[2px] [text-decoration-thickness:3pt] text-[10pt] leading-[14.5pt]">
@@ -109,40 +120,40 @@ const contains_fr = ref("")
 									g</span></p>
 							<p class="">{{ fats_percent }} %</p>
 						</div>
-						<div class="flex justify-between items-center">
-							<p class="leading-[9pt] [text-indent:6pt]">Saturated / saturés <span
-									class="font-normal">{{ saturated }} g</span></p>
-							<p class="">{{ saturated_percent }} %</p>
+						<div class="flex justify-between items-center relative">
+							<p class="leading-[9pt] [text-indent:6pt]">Saturated / saturés <span class="font-normal">{{
+								saturated }} g</span></p>
+							<p class="absolute right-0 -bottom-1">{{ saturated_percent }} %</p>
 						</div>
 						<div class="flex justify-between items-center">
-							<p class="leading-[9pt] [text-indent:6pt]">+ Trans / trans <span
-									class="font-normal">{{ trans }} g</span></p>
+							<p class="leading-[9pt] [text-indent:6pt]">+ Trans / trans <span class="font-normal">{{
+								trans }} g</span></p>
 						</div>
-						<hr class="h-[0.5pt] bg-black border-0" />
+						<hr class="h-[0.5pt] bg-black border-0 mt-[1pt]" />
 						<div class="flex justify-between ">
-							<p class="font-black leading-[12pt]">Carbohydrate / Glucides <span
-									class="font-normal">{{ carbs }} g</span></p>
+							<p class="font-black leading-[12pt]">Carbohydrate / Glucides <span class="font-normal">{{
+								carbs }} g</span></p>
 						</div>
 						<div class="flex justify-between items-center">
-							<p class="leading-[9pt] [text-indent:6pt]">Fibre / Fibres <span
-									class="font-normal">{{ fibre }} g</span></p>
+							<p class="leading-[9pt] [text-indent:6pt]">Fibre / Fibres <span class="font-normal">{{ fibre
+							}} g</span></p>
 							<p class="">{{ fibre_percent }} %</p>
 						</div>
 						<div class="flex justify-between items-center">
-							<p class="leading-[9pt] [text-indent:6pt]">Sugars / Sucres <span
-									class="font-normal">{{ sugar }} g</span></p>
+							<p class="leading-[9pt] [text-indent:6pt]">Sugars / Sucres <span class="font-normal">{{
+								sugar }} g</span></p>
 							<p class="">{{ sugar_percent }} %</p>
 						</div>
 						<hr class="h-[0.5pt] bg-black border-0" />
 						<div class="flex justify-between ">
-							<p class="font-black leading-[12pt]">Protein / Protéines <span
-									class="font-normal">{{ protein }}
+							<p class="font-black leading-[12pt]">Protein / Protéines <span class="font-normal">{{
+								protein }}
 									g</span></p>
 						</div>
 						<hr class="h-[0.5pt] bg-black border-0" />
 						<div class="flex justify-between ">
-							<p class="font-black leading-[12pt]">Cholesterol / Cholestérol <span
-									class="font-normal">{{ cholesterol }} mg</span></p>
+							<p class="font-black leading-[12pt]">Cholesterol / Cholestérol <span class="font-normal">{{
+								cholesterol }} mg</span></p>
 						</div>
 						<hr class="h-[0.5pt] bg-black border-0" />
 						<div class="flex justify-between items-center">
@@ -159,7 +170,7 @@ const contains_fr = ref("")
 						<hr class="h-[0.5pt] bg-black border-0" />
 						<div class="flex justify-between items-center">
 							<p class="leading-[12pt]">Calcium <span class="font-normal">{{ calcium }} mg</span></p>
-							<p class="">{{ calcium_percent}} %</p>
+							<p class="">{{ calcium_percent }} %</p>
 						</div>
 						<hr class="h-[0.5pt] bg-black border-0" />
 						<div class="flex justify-between items-center">
@@ -205,11 +216,14 @@ const contains_fr = ref("")
 							{{ contains_fr }}
 						</p>
 						<p>
-							<strong>Peut conenir: </strong>
+							<strong>Peut contenir: </strong>
 							{{ may_contain_fr }}
 						</p>
 					</div>
 				</div>
+				<button @click="onDownload"
+					class="rounded-md ml-18 mt-4 bg-red-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-xs hover:bg-red-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-600">Export
+					Label</button>
 
 			</div>
 			<div
@@ -219,8 +233,8 @@ const contains_fr = ref("")
 						<div class="mt-10 grid grid-cols-1 gap-x-6 gap-y-4 sm:grid-cols-6">
 
 							<div class="col-span-full">
-								<label for="measurement"
-									class="block text-sm/6 font-medium text-gray-900">Measurement</label>
+								<label for="measurement" class="block text-sm/6 font-medium text-gray-900">Household
+									Measurement</label>
 								<div class="mt-2">
 									<input v-model="measurement" name="measurement" id="measurement" rows="3"
 										placeholder="1/4 cup"
@@ -228,8 +242,8 @@ const contains_fr = ref("")
 								</div>
 							</div>
 							<div class="col-span-full">
-								<label for="measurement_fr"
-									class="block text-sm/6 font-medium text-gray-900">Measurement
+								<label for="measurement_fr" class="block text-sm/6 font-medium text-gray-900">Household
+									Measurement
 									French</label>
 								<div class="mt-2">
 									<input v-model="measurement_fr" name="measurement_fr" id="measurement_fr" rows="3"
@@ -259,13 +273,13 @@ const contains_fr = ref("")
 								</div>
 							</div>
 
-							<div class="col-span-full">
-								<label for="servings" class="block text-sm/6 font-medium text-gray-900">Servings</label>
-								<div class="mt-2">
-									<input v-model="servings" name="servings" id="servings" rows="3" placeholder="6"
-										class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6" />
-								</div>
-							</div>
+							<!-- <div class="col-span-full"> -->
+							<!-- 	<label for="servings" class="block text-sm/6 font-medium text-gray-900">Servings</label> -->
+							<!-- 	<div class="mt-2"> -->
+							<!-- 		<input v-model="servings" name="servings" id="servings" rows="3" placeholder="6" -->
+							<!-- 			class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6" /> -->
+							<!-- 	</div> -->
+							<!-- </div> -->
 							<div class="col-span-full">
 								<label for="calories" class="block text-sm/6 font-medium text-gray-900">Calories</label>
 								<div class="mt-2">
@@ -356,13 +370,13 @@ const contains_fr = ref("")
 							<div class="col-span-full">
 								<label for="protein" class="block text-sm/6 font-medium text-gray-900">Protein</label>
 								<div class="mt-2">
-									<input v-model="protein" name="protein" id="protein" rows="3"
-										placeholder="8"
+									<input v-model="protein" name="protein" id="protein" rows="3" placeholder="8"
 										class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6" />
 								</div>
 							</div>
 							<div class="col-span-full">
-								<label for="cholesterol" class="block text-sm/6 font-medium text-gray-900">Cholesterol</label>
+								<label for="cholesterol"
+									class="block text-sm/6 font-medium text-gray-900">Cholesterol</label>
 								<div class="mt-2">
 									<input v-model="cholesterol" name="cholesterol" id="cholesterol" rows="3"
 										placeholder="5"
@@ -386,18 +400,21 @@ const contains_fr = ref("")
 								</div>
 							</div>
 							<div class="sm:col-span-3">
-								<label for="potassium" class="block text-sm/6 font-medium text-gray-900">Potassium</label>
+								<label for="potassium"
+									class="block text-sm/6 font-medium text-gray-900">Potassium</label>
 								<div class="mt-2">
-									<input v-model="potassium" name="potassium" id="potassium" rows="3" placeholder="100"
+									<input v-model="potassium" name="potassium" id="potassium" rows="3"
+										placeholder="100"
 										class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6" />
 								</div>
 							</div>
 							<div class="sm:col-span-3">
-								<label for="potassium_percent" class="block text-sm/6 font-medium text-gray-900">Potassium
+								<label for="potassium_percent"
+									class="block text-sm/6 font-medium text-gray-900">Potassium
 									%</label>
 								<div class="mt-2">
-									<input v-model="potassium_percent" name="potassium_percent" id="potassium_percent" rows="3"
-										placeholder="2"
+									<input v-model="potassium_percent" name="potassium_percent" id="potassium_percent"
+										rows="3" placeholder="2"
 										class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6" />
 								</div>
 							</div>
@@ -412,8 +429,8 @@ const contains_fr = ref("")
 								<label for="calcium_percent" class="block text-sm/6 font-medium text-gray-900">Calcium
 									%</label>
 								<div class="mt-2">
-									<input v-model="calcium_percent" name="calcium_percent" id="calcium_percent" rows="3"
-										placeholder="10"
+									<input v-model="calcium_percent" name="calcium_percent" id="calcium_percent"
+										rows="3" placeholder="10"
 										class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6" />
 								</div>
 							</div>
@@ -434,7 +451,8 @@ const contains_fr = ref("")
 								</div>
 							</div>
 							<div class="col-span-full">
-								<label for="ingredients" class="block text-sm/6 font-medium text-gray-900">Ingredients</label>
+								<label for="ingredients"
+									class="block text-sm/6 font-medium text-gray-900">Ingredients</label>
 								<div class="mt-2">
 									<textarea v-model="ingredients" name="ingredients" id="ingredients" rows="3"
 										placeholder="Whole grain wheat flour, Sugars, Whey Protein"
@@ -450,7 +468,8 @@ const contains_fr = ref("")
 								</div>
 							</div>
 							<div class="col-span-full">
-								<label for="may_contain" class="block text-sm/6 font-medium text-gray-900">May Contain</label>
+								<label for="may_contain" class="block text-sm/6 font-medium text-gray-900">May
+									Contain</label>
 								<div class="mt-2">
 									<textarea v-model="may_contain" name="contains" id="contains" rows="3"
 										placeholder="Egg, Tree nuts"
@@ -458,15 +477,17 @@ const contains_fr = ref("")
 								</div>
 							</div>
 							<div class="col-span-full">
-								<label for="ingredients_fr" class="block text-sm/6 font-medium text-gray-900">Ingredients French</label>
+								<label for="ingredients_fr"
+									class="block text-sm/6 font-medium text-gray-900">Ingredients French</label>
 								<div class="mt-2">
-									<textarea v-model="ingredients_fr" name="ingredients_fr" id="ingredients_fr" rows="3"
-										placeholder="wheat flour, sugar, eggs"
+									<textarea v-model="ingredients_fr" name="ingredients_fr" id="ingredients_fr"
+										rows="3" placeholder="wheat flour, sugar, eggs"
 										class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6" />
 								</div>
 							</div>
 							<div class="col-span-full">
-								<label for="contains_fr" class="block text-sm/6 font-medium text-gray-900">Contains French</label>
+								<label for="contains_fr" class="block text-sm/6 font-medium text-gray-900">Contains
+									French</label>
 								<div class="mt-2">
 									<textarea v-model="contains_fr" name="contains_fr" id="contains_fr" rows="3"
 										placeholder="wheat flour, sugar, eggs"
@@ -474,10 +495,11 @@ const contains_fr = ref("")
 								</div>
 							</div>
 							<div class="col-span-full">
-								<label for="may_contain_fr" class="block text-sm/6 font-medium text-gray-900">May Contain French</label>
+								<label for="may_contain_fr" class="block text-sm/6 font-medium text-gray-900">May
+									Contain French</label>
 								<div class="mt-2">
-									<textarea v-model="may_contain_fr" name="may_contain_fr" id="may_contain_fr" rows="3"
-										placeholder="wheat flour, sugar, eggs"
+									<textarea v-model="may_contain_fr" name="may_contain_fr" id="may_contain_fr"
+										rows="3" placeholder="wheat flour, sugar, eggs"
 										class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6" />
 								</div>
 							</div>
