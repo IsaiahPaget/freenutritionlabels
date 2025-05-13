@@ -5,6 +5,7 @@ const measurement = ref("")
 const measurement_fr = ref("")
 const measurement_metric = ref("")
 const measurement_unit = ref("")
+const servings = ref("")
 
 const calories = ref("")
 const fats = ref("")
@@ -81,98 +82,99 @@ const contains_fr = ref("")
 			</div>
 			<div
 				class="-mt-12 -ml-12 p-12 lg:sticky lg:top-4 lg:col-start-2 lg:row-span-2 lg:row-start-1 lg:overflow-hidden">
-				<div class=" w-[190pt] p-4 shadow shadow-xl rounded-2xl bg-white">
-					<div class="border-[0.5pt] p-[3pt] text-[8pt]">
-						<h2 class="font-bold text-[13pt] leading-[14.5pt]">Nutrition Facts</h2>
-						<h2 class="font-bold text-[13pt] leading-[14.5pt]">Valeur nutritive</h2>
+				<div class="w-[190pt] p-4 shadow-xl rounded-2xl bg-white">
+					<div class="border-[0.5pt] p-[3pt] leading-[10pt] text-[8pt]">
+						<h2 class="font-black text-[13pt] leading-[14pt]">Nutrition Facts</h2>
+						<h2 class="font-black text-[13pt] leading-[14pt]">Valeur nutritive</h2>
 						<p class="text-[9pt] leading-[11pt]">Per {{ measurement }} ({{ measurement_metric }} {{
+							measurement_unit }}) / par {{ measurement_fr }} ({{ measurement_metric }} {{
 							measurement_unit }})</p>
-						<p class="text-[9pt] leading-[11pt]">Pour {{ measurement_fr }} ({{ measurement_metric }} {{
-							measurement_unit }})</p>
-						<hr class="h-[1pt] bg-black border-0 mb-[1px]" />
+						<p class="text-[9pt] leading-[11pt]">{{ servings }} servings</p>
+						<p class="text-[9pt] leading-[11pt]">{{ servings }} portions</p>
+						<hr class="h-[1pt] bg-black border-0 mt-[1px]" />
 						<div class="flex justify-between">
 							<h3
-								class="font-bold underline underline-offset-4 [text-decoration-thickness:3pt] text-[10pt] leading-[14.5pt]">
+								class="font-black underline underline-offset-3 mb-[2px] [text-decoration-thickness:3pt] text-[10pt] leading-[14.5pt]">
 								Calories {{ calories }}</h3>
 							<div>
-								<p class="font-bold leading-[9pt] text-[6pt] text-end">% Daily Value<span
+								<p class="font-black text-[6pt] leading-[7pt] text-end">% Daily Value<span
 										class="font-normal text-[9pt] [vertical-align:-1.5pt]">*</span></p>
-								<p class="font-bold leading-[9pt] text-[6pt] text-end">% valeur quotidienne<span
+								<p class="font-black text-[6pt] leading-[7pt] text-end">% valeur quotidienne<span
 										class="font-normal text-[9pt] [vertical-align:-1.5pt]">*</span></p>
 							</div>
 						</div>
-						<div class="flex justify-between ">
-							<p class="text-[9pt] font-bold leading-[12pt]">Fat / Lipides <span class="font-normal">{{
+						<div class="flex justify-between items-center">
+							<p class="font-black leading-[12pt]">Fat / Lipides <span class="font-normal">{{
 								fats }}
 									g</span></p>
 							<p class="">{{ fats_percent }} %</p>
 						</div>
-						<div class="flex justify-between ">
-							<p class="text-[9pt] leading-[9pt] [text-indent:6pt]">Saturated / saturés <span
+						<div class="flex justify-between items-center">
+							<p class="leading-[9pt] [text-indent:6pt]">Saturated / saturés <span
 									class="font-normal">{{ saturated }} g</span></p>
 							<p class="">{{ saturated_percent }} %</p>
 						</div>
-						<div class="flex justify-between ">
-							<p class="text-[9pt] leading-[9pt] [text-indent:6pt]">+ Trans / trans <span
+						<div class="flex justify-between items-center">
+							<p class="leading-[9pt] [text-indent:6pt]">+ Trans / trans <span
 									class="font-normal">{{ trans }} g</span></p>
 						</div>
 						<hr class="h-[0.5pt] bg-black border-0" />
 						<div class="flex justify-between ">
-							<p class="text-[9pt] font-bold leading-[12pt]">Carbohydrate / Glucides <span
+							<p class="font-black leading-[12pt]">Carbohydrate / Glucides <span
 									class="font-normal">{{ carbs }} g</span></p>
 						</div>
-						<div class="flex justify-between ">
-							<p class="text-[9pt] leading-[9pt] [text-indent:6pt]">Fibre / Fibres <span
+						<div class="flex justify-between items-center">
+							<p class="leading-[9pt] [text-indent:6pt]">Fibre / Fibres <span
 									class="font-normal">{{ fibre }} g</span></p>
 							<p class="">{{ fibre_percent }} %</p>
 						</div>
-						<div class="flex justify-between ">
-							<p class="text-[9pt] leading-[9pt] [text-indent:6pt]">Sugars / Sucres <span
+						<div class="flex justify-between items-center">
+							<p class="leading-[9pt] [text-indent:6pt]">Sugars / Sucres <span
 									class="font-normal">{{ sugar }} g</span></p>
 							<p class="">{{ sugar_percent }} %</p>
 						</div>
 						<hr class="h-[0.5pt] bg-black border-0" />
 						<div class="flex justify-between ">
-							<p class="text-[9pt] font-bold leading-[12pt]">Protein / Protéines <span
+							<p class="font-black leading-[12pt]">Protein / Protéines <span
 									class="font-normal">{{ protein }}
 									g</span></p>
 						</div>
 						<hr class="h-[0.5pt] bg-black border-0" />
 						<div class="flex justify-between ">
-							<p class="text-[9pt] font-bold leading-[12pt]">Cholesterol / Cholestérol <span
+							<p class="font-black leading-[12pt]">Cholesterol / Cholestérol <span
 									class="font-normal">{{ cholesterol }} mg</span></p>
 						</div>
 						<hr class="h-[0.5pt] bg-black border-0" />
-						<div class="flex justify-between ">
-							<p class="text-[9pt] font-bold leading-[12pt]">Sodium <span class="font-normal">{{ sodium }}
+						<div class="flex justify-between items-center">
+							<p class="font-black leading-[12pt]">Sodium <span class="font-normal">{{ sodium }}
 									mg</span></p>
 							<p class="">{{ sodium_percent }} %</p>
 						</div>
 						<hr class="h-[2.5pt] bg-black border-0" />
-						<div class="flex justify-between ">
-							<p class="text-[9pt] leading-[12pt]">Potassium <span class="font-normal">{{ potassium }} mg</span>
+						<div class="flex justify-between items-center">
+							<p class="leading-[12pt]">Potassium <span class="font-normal">{{ potassium }} mg</span>
 							</p>
 							<p class="">{{ potassium_percent }} %</p>
 						</div>
 						<hr class="h-[0.5pt] bg-black border-0" />
-						<div class="flex justify-between ">
-							<p class="text-[9pt] leading-[12pt]">Calcium <span class="font-normal">{{ calcium }} mg</span></p>
+						<div class="flex justify-between items-center">
+							<p class="leading-[12pt]">Calcium <span class="font-normal">{{ calcium }} mg</span></p>
 							<p class="">{{ calcium_percent}} %</p>
 						</div>
 						<hr class="h-[0.5pt] bg-black border-0" />
-						<div class="flex justify-between ">
-							<p class="text-[9pt] leading-[12pt]">Iron / Fer <span class="font-normal">{{ iron }} mg</span>
+						<div class="flex justify-between items-center">
+							<p class="leading-[12pt]">Iron / Fer <span class="font-normal">{{ iron }} mg</span>
 							</p>
 							<p class="">{{ iron_percent }} %</p>
 						</div>
 						<hr class="h-[2.5pt] bg-black border-0" />
 						<div class="">
-							<p class="text-[6pt] leading-[13pt]"><span
+							<p class="text-[6.5pt] leading-[13pt]"><span
 									class="font-normal text-[9pt] [vertical-align:-1.5pt]">*</span>5% or less is
 								<strong>a
 									little</strong>, 15% or more is <strong>a lot</strong>
 							</p>
-							<p class="text-[6pt] leading-[4pt]"><span
+							<p class="text-[6.5pt] leading-[2pt]"><span
 									class="font-normal text-[9pt] [vertical-align:-1.5pt]">*</span>5% ou moins c'est
 								<strong>peu</strong>, 15% ou plus c'est <strong>beaucoup</strong>
 							</p>
@@ -257,6 +259,13 @@ const contains_fr = ref("")
 								</div>
 							</div>
 
+							<div class="col-span-full">
+								<label for="servings" class="block text-sm/6 font-medium text-gray-900">Servings</label>
+								<div class="mt-2">
+									<input v-model="servings" name="servings" id="servings" rows="3" placeholder="6"
+										class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6" />
+								</div>
+							</div>
 							<div class="col-span-full">
 								<label for="calories" class="block text-sm/6 font-medium text-gray-900">Calories</label>
 								<div class="mt-2">
