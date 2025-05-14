@@ -92,138 +92,118 @@ const onDownload = async () => {
 						<h1 class="mt-2 text-4xl font-semibold tracking-tight text-pretty text-gray-900 sm:text-5xl">
 							Canadian Nutrition Facts Label Generator</h1>
 						<p class="mt-6 text-xl/8 text-gray-700">
-							Fill in the fields with accurate up to date nutrition information and then take a screenshot or hit export.
+							Fill in the fields with accurate up to date nutrition information and then take a screenshot
+							or hit export.
 						</p>
 					</div>
 				</div>
 			</div>
 			<div
 				class="-mt-12 -ml-12 p-12 lg:sticky lg:top-4 lg:col-start-2 lg:row-span-2 lg:row-start-1 lg:overflow-hidden">
-				<div id="nutritionlabel" class="w-[190pt] p-4 shadow-xl rounded-2xl bg-white">
-					<div class="border-[0.5pt] p-[3pt] leading-[10pt] text-[8pt]">
-						<h2 class="font-black text-[13pt] leading-[14pt]">Nutrition Facts</h2>
-						<h2 class="font-black text-[13pt] leading-[14pt]">Valeur nutritive</h2>
-						<p class="text-[9pt] leading-[11pt]">Per {{ measurement }} ({{ measurement_metric }} {{
+				<div id="nutritionlabel" class="w-[285pt] p-4 shadow-xl rounded-2xl bg-white">
+					<div class="border-[0.75pt] p-[4.5pt] leading-[15pt] text-[12pt]">
+						<h2 class="font-black text-[19.5pt] leading-[21pt]">Nutrition Facts</h2>
+						<h2 class="font-black text-[19.5pt] leading-[21pt]">Valeur nutritive</h2>
+						<p class="text-[13.5pt] leading-[16.5pt]">Per {{ measurement }} ({{ measurement_metric }} {{
 							measurement_unit }})</p>
-						<p class="text-[9pt] leading-[11pt]">Pour {{ measurement_fr }} ({{ measurement_metric }} {{
+						<p class="text-[13.5pt] leading-[16.5pt]">Pour {{ measurement_fr }} ({{ measurement_metric }} {{
 							measurement_unit }})</p>
-						<hr class="h-[1pt] bg-black border-0 my-[1px]" />
+						<hr class="h-[1.5pt] bg-black border-0 my-[1.5px]" />
 						<div class="flex justify-between">
 							<h3
-								class="font-black underline underline-offset-3 mb-[2px] [text-decoration-thickness:3pt] text-[10pt] leading-[14.5pt]">
-								Calories {{ calories }}</h3>
+								class="font-black underline underline-offset-3 mb-[3px] [text-decoration-thickness:4.5pt] text-[15pt] leading-[21.75pt]">
+								Calories {{ calories }}
+							</h3>
 							<div>
-								<p class="font-black text-[6pt] leading-[7pt] text-end">% Daily Value<span
-										class="font-normal text-[9pt] [vertical-align:-1.5pt]">*</span></p>
-								<p class="font-black text-[6pt] leading-[7pt] text-end">% valeur quotidienne<span
-										class="font-normal text-[9pt] [vertical-align:-1.5pt]">*</span></p>
+								<p class="font-black text-[9pt] leading-[10.5pt] text-end">% Daily Value
+									<span class="font-normal text-[13.5pt] [vertical-align:-2.25pt]">*</span>
+								</p>
+								<p class="font-black text-[9pt] leading-[10.5pt] text-end">% valeur quotidienne
+									<span class="font-normal text-[13.5pt] [vertical-align:-2.25pt]">*</span>
+								</p>
 							</div>
 						</div>
 						<div class="flex justify-between items-center">
-							<p class="font-black leading-[12pt]">Fat / Lipides <span class="font-normal">{{
-								fats }}
+							<p class="font-black leading-[18pt]">Fat / Lipides <span class="font-normal">{{ fats }}
 									g</span></p>
 							<p class="">{{ fats_percent }} %</p>
 						</div>
 						<div class="flex justify-between items-center relative">
-							<p class="leading-[9pt] [text-indent:6pt]">Saturated / saturés <span class="font-normal">{{
-								saturated }} g</span></p>
+							<p class="leading-[13.5pt] [text-indent:9pt]">Saturated / saturés <span
+									class="font-normal">{{ saturated }} g</span></p>
 							<p class="absolute right-0 -bottom-1">{{ saturated_percent }} %</p>
 						</div>
 						<div class="flex justify-between items-center">
-							<p class="leading-[9pt] [text-indent:6pt]">+ Trans / trans <span class="font-normal">{{
-								trans }} g</span></p>
+							<p class="leading-[13.5pt] [text-indent:9pt]">+ Trans / trans <span class="font-normal">{{
+									trans }} g</span></p>
 						</div>
-						<hr class="h-[0.5pt] bg-black border-0 mt-[1pt]" />
-						<div class="flex justify-between ">
-							<p class="font-black leading-[12pt]">Carbohydrate / Glucides <span class="font-normal">{{
-								carbs }} g</span></p>
+						<hr class="h-[0.75pt] bg-black border-0 mt-[1.5pt]" />
+						<div class="flex justify-between">
+							<p class="font-black leading-[18pt]">Carbohydrate / Glucides <span class="font-normal">{{
+									carbs }} g</span></p>
 						</div>
 						<div class="flex justify-between items-center">
-							<p class="leading-[9pt] [text-indent:6pt]">Fibre / Fibres <span class="font-normal">{{ fibre
-									}} g</span></p>
+							<p class="leading-[13.5pt] [text-indent:9pt]">Fibre / Fibres <span class="font-normal">{{
+									fibre }} g</span></p>
 							<p class="">{{ fibre_percent }} %</p>
 						</div>
 						<div class="flex justify-between items-center">
-							<p class="leading-[9pt] [text-indent:6pt]">Sugars / Sucres <span class="font-normal">{{
-								sugar }} g</span></p>
+							<p class="leading-[13.5pt] [text-indent:9pt]">Sugars / Sucres <span class="font-normal">{{
+									sugar }} g</span></p>
 							<p class="">{{ sugar_percent }} %</p>
 						</div>
-						<hr class="h-[0.5pt] bg-black border-0" />
-						<div class="flex justify-between ">
-							<p class="font-black leading-[12pt]">Protein / Protéines <span class="font-normal">{{
-								protein }}
-									g</span></p>
+						<hr class="h-[0.75pt] bg-black border-0" />
+						<div class="flex justify-between">
+							<p class="font-black leading-[18pt]">Protein / Protéines <span class="font-normal">{{
+									protein }} g</span></p>
 						</div>
-						<hr class="h-[0.5pt] bg-black border-0" />
-						<div class="flex justify-between ">
-							<p class="font-black leading-[12pt]">Cholesterol / Cholestérol <span class="font-normal">{{
-								cholesterol }} mg</span></p>
+						<hr class="h-[0.75pt] bg-black border-0" />
+						<div class="flex justify-between">
+							<p class="font-black leading-[18pt]">Cholesterol / Cholestérol <span class="font-normal">{{
+									cholesterol }} mg</span></p>
 						</div>
-						<hr class="h-[0.5pt] bg-black border-0" />
+						<hr class="h-[0.75pt] bg-black border-0" />
 						<div class="flex justify-between items-center">
-							<p class="font-black leading-[12pt]">Sodium <span class="font-normal">{{ sodium }}
-									mg</span></p>
+							<p class="font-black leading-[18pt]">Sodium <span class="font-normal">{{ sodium }} mg</span>
+							</p>
 							<p class="">{{ sodium_percent }} %</p>
 						</div>
-						<hr class="h-[2.5pt] bg-black border-0" />
+						<hr class="h-[3.75pt] bg-black border-0" />
 						<div class="flex justify-between items-center">
-							<p class="leading-[12pt]">Potassium <span class="font-normal">{{ potassium }} mg</span>
-							</p>
+							<p class="leading-[18pt]">Potassium <span class="font-normal">{{ potassium }} mg</span></p>
 							<p class="">{{ potassium_percent }} %</p>
 						</div>
-						<hr class="h-[0.5pt] bg-black border-0" />
+						<hr class="h-[0.75pt] bg-black border-0" />
 						<div class="flex justify-between items-center">
-							<p class="leading-[12pt]">Calcium <span class="font-normal">{{ calcium }} mg</span></p>
+							<p class="leading-[18pt]">Calcium <span class="font-normal">{{ calcium }} mg</span></p>
 							<p class="">{{ calcium_percent }} %</p>
 						</div>
-						<hr class="h-[0.5pt] bg-black border-0" />
+						<hr class="h-[0.75pt] bg-black border-0" />
 						<div class="flex justify-between items-center">
-							<p class="leading-[12pt]">Iron / Fer <span class="font-normal">{{ iron }} mg</span>
-							</p>
+							<p class="leading-[18pt]">Iron / Fer <span class="font-normal">{{ iron }} mg</span></p>
 							<p class="">{{ iron_percent }} %</p>
 						</div>
-						<hr class="h-[2.5pt] bg-black border-0" />
+						<hr class="h-[3.75pt] bg-black border-0" />
 						<div class="">
-							<p class="text-[6.5pt] leading-[13pt]"><span
-									class="font-normal text-[9pt] [vertical-align:-1.5pt]">*</span>5% or less is
-								<strong>a
-									little</strong>, 15% or more is <strong>a lot</strong>
+							<p class="text-[9.75pt] leading-[19.5pt]">
+								<span class="font-normal text-[13.5pt] [vertical-align:-2.25pt]">*</span>5% or less is
+								<strong>a little</strong>,
+								15% or more is <strong>a lot</strong>
 							</p>
-							<p class="text-[6.5pt] leading-[2pt]"><span
-									class="font-normal text-[9pt] [vertical-align:-1.5pt]">*</span>5% ou moins c'est
-								<strong>peu</strong>, 15% ou plus c'est <strong>beaucoup</strong>
+							<p class="text-[9.75pt] leading-[3pt]">
+								<span class="font-normal text-[13.5pt] [vertical-align:-2.25pt]">*</span>5% ou moins
+								c'est <strong>peu</strong>,
+								15% ou plus c'est <strong>beaucoup</strong>
 							</p>
 						</div>
 					</div>
-					<div class="text-[9pt] leading-[9pt] text-center">
-						<p>
-							<strong>Ingredients: </strong>
-							{{ ingredients }}
-						</p>
-						<p>
-							<strong>Contains: </strong>
-
-							{{ contains }}
-						</p>
-						<p>
-							<strong>May contain: </strong>
-							{{ may_contain }}
-
-						</p>
-						<p>
-							<strong>Ingrédients: </strong>
-							{{ ingredients_fr }}
-						</p>
-						<p>
-							<strong>Contient: </strong>
-
-							{{ contains_fr }}
-						</p>
-						<p>
-							<strong>Peut contenir: </strong>
-							{{ may_contain_fr }}
-						</p>
+					<div class="text-[13.5pt] leading-[13.5pt] text-center">
+						<p><strong>Ingredients: </strong>{{ ingredients }}</p>
+						<p><strong>Contains: </strong>{{ contains }}</p>
+						<p><strong>May contain: </strong>{{ may_contain }}</p>
+						<p><strong>Ingrédients: </strong>{{ ingredients_fr }}</p>
+						<p><strong>Contient: </strong>{{ contains_fr }}</p>
+						<p><strong>Peut contenir: </strong>{{ may_contain_fr }}</p>
 					</div>
 				</div>
 				<button @click="onDownload"
@@ -325,7 +305,8 @@ const onDownload = async () => {
 							</div>
 							<div class="sm:col-span-2">
 								<label for="saturated_percent"
-									class="block text-sm/6 font-medium text-gray-900">Saturated + Trans %</label>
+									class="block text-sm/6 font-medium text-gray-900">Saturated +
+									Trans %</label>
 								<div class="mt-2">
 									<input v-model="saturated_percent" name="saturated_percent" id="saturated_percent"
 										rows="3" placeholder="5"
@@ -483,7 +464,8 @@ const onDownload = async () => {
 							</div>
 							<div class="col-span-full">
 								<label for="ingredients_fr"
-									class="block text-sm/6 font-medium text-gray-900">Ingredients French</label>
+									class="block text-sm/6 font-medium text-gray-900">Ingredients
+									French</label>
 								<div class="mt-2">
 									<textarea v-model="ingredients_fr" name="ingredients_fr" id="ingredients_fr"
 										rows="3" placeholder="wheat flour, sugar, eggs"
