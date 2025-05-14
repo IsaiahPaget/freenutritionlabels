@@ -92,7 +92,7 @@ const onDownload = async () => {
 						<h1 class="mt-2 text-4xl font-semibold tracking-tight text-pretty text-gray-900 sm:text-5xl">
 							Canadian Nutrition Facts Label Generator</h1>
 						<p class="mt-6 text-xl/8 text-gray-700">
-							Fill in the fields with accurate up to date nutrition information and then hit export.
+							Fill in the fields with accurate up to date nutrition information and then take a screenshot or hit export.
 						</p>
 					</div>
 				</div>
