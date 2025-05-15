@@ -547,6 +547,13 @@ const onDownload = async () => {
 							Review compliance documents
 						</a>
 					</p>
+					<p class="mt-6 text-lg text-gray-600">
+						Site by 
+						<a href="mailto:isaiahpaget@gmail.com"
+							class="relative cursor-pointer rounded-md bg-white  text-red-600 focus-within:ring-2 focus-within:ring-red-600 focus-within:ring-offset-2 focus-within:outline-hidden hover:text-red-500">
+							BYTEHEAD
+						</a>
+					</p>
 				</div>
 			</div>
 		</div>
