@@ -1,5 +1,13 @@
-# Vue 3 + TypeScript + Vite
+# Free Nurition Labels
 
-This template should help get you started developing with Vue 3 and TypeScript in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+Canadian bilingual nutrition facts generator
 
-Learn more about the recommended Project Setup and IDE Support in the [Vue Docs TypeScript Guide](https://vuejs.org/guide/typescript/overview.html#project-setup).
+DISCLAIMER: This tool is made available in the hope that it will be useful, but WITHOUT ANY
+WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR
+PURPOSE.
+<a href="https://inspection.canada.ca/en/food-labels/labelling/industry/requirements-checklist"
+    class="relative cursor-pointer rounded-md bg-white  text-red-600 focus-within:ring-2 focus-within:ring-red-600 focus-within:ring-offset-2 focus-within:outline-hidden hover:text-red-500">
+    Review compliance documents
+</a>
+
+
