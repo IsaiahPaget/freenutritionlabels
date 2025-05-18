@@ -9,7 +9,7 @@ import { faGithub } from '@fortawesome/free-brands-svg-icons';
 			<div class="flex lg:flex-1">
 				<a href="#" class="-m-1.5 p-1.5">
 					<span class="sr-only">Your Company</span>
-					<img class="h-8 w-auto" src="/site-icon.webp" alt="">
+					<img class="h-8 w-auto" src="/favicon.webp" alt="">
 				</a>
 			</div>
 			<div class="flex flex-1 justify-end">
