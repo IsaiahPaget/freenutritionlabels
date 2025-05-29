@@ -60,10 +60,10 @@ const onDownload = async () => {
 		alert("An error has occured, try a take a screenshot")
 		return
 	}
-	htmlToImage.toJpeg(node, { quality: 0.95 })
+	htmlToImage.toPng(node, { quality: 0.95 })
 		.then(function (dataUrl) {
 			var link = document.createElement('a');
-			link.download = 'nutritionlabel.jpeg';
+			link.download = 'nutritionlabel.png';
 			link.href = dataUrl;
 			link.click();
 		});
